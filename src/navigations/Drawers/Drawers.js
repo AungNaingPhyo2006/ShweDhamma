@@ -1,0 +1,25 @@
+import {StyleSheet, Text, View, Button} from 'react-native';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import HomeStack from '../../stacks/HomeStack';
+import GeneralStack from '../../stacks/GeneralStack';
+import SettingStack from '../../stacks/SettingStack';
+
+const Tab = createMaterialTopTabNavigator();
+
+const Drawers = () => {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator screenOptions={{}}>
+        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="General" component={GeneralStack} />
+        <Tab.Screen name="Setting" component={SettingStack} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default Drawers;
+
+const styles = StyleSheet.create({});
