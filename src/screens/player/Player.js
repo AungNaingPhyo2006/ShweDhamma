@@ -1,11 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {
+  Alert,
+  Button,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Slider from '@react-native-community/slider';
 import TrackPlayer, {RepeatMode} from 'react-native-track-player';
-import {myTracks} from '../../dataBank/Tracks';
 import {setupPlayer, playbackService} from '../../../Service';
+import {FileHeart, PauseCircle, PlayCircle} from 'lucide-react-native';
 
-const Player = () => {
+const Player = ({myTracks}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [trackDuration, setTrackDuration] = useState(0);
   const [currentPosition, setCurrentPosition] = useState(0);
@@ -59,22 +67,62 @@ const Player = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{myTracks[0].title}</Text>
-      <Text style={styles.artist}>{myTracks[0].artist}</Text>
-
-      <View style={styles.controls}>
-        <Slider
-          style={styles.slider}
-          minimumValue={0}
-          maximumValue={trackDuration}
-          value={currentPosition}
-          onValueChange={onSliderValueChange}
+      <View
+        style={{
+          borderRadius: 25,
+          backgroundColor: 'white',
+          alignItems: 'center',
+          marginVertical: 16,
+        }}>
+        <Image
+          source={myTracks.artwork}
+          resizeMode="cover"
+          style={{width: 200, height: 200, borderRadius: 20}}
         />
-        <Button title={isPlaying ? 'Pause' : 'Play'} onPress={playTrack} />
+      </View>
+      <Slider
+        style={styles.slider}
+        minimumValue={0}
+        maximumValue={trackDuration}
+        value={currentPosition}
+        onValueChange={onSliderValueChange}
+        minimumTrackTintColor="#FFFFFF"
+        maximumTrackTintColor="#000000"
+        thumbTintColor="yellow"
+      />
+      <View style={{flexDirection: 'row'}}>
+        <Text style={styles.duration}>{formatTime(currentPosition)}</Text>
+        <View style={{width: '50%'}}></View>
+        <Text style={styles.duration}>{formatTime(trackDuration)}</Text>
+      </View>
+      {/* <===================> */}
+      <View
+        style={{
+          // backgroundColor: 'green',
+          padding: 5,
+          marginVertical: 12,
+          alignItems: 'center',
+        }}>
+        <Text style={styles.title}>{myTracks.title}</Text>
+        <Text style={styles.artist}>{myTracks.artist}</Text>
+      </View>
+      <View style={styles.controls}>
+        <TouchableOpacity onPress={playTrack}>
+          {isPlaying ? (
+            <PauseCircle size={48} color="white" />
+          ) : (
+            <PlayCircle size={48} color="white" />
+          )}
+        </TouchableOpacity>
+        <View style={{width: '20%'}}></View>
 
-        <Text style={styles.duration}>
-          {formatTime(currentPosition)} / {formatTime(trackDuration)}
-        </Text>
+        <TouchableOpacity
+          onPress={() => {
+            Alert.alert('', 'Need to apply lyric text!');
+          }}
+          style={{justifyContent: 'center'}}>
+          <FileHeart size={46} color="white" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -85,28 +133,45 @@ export default Player;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    // marginTop: 50,
     alignItems: 'center',
+    backgroundColor: 'blue',
+    // borderTopLeftRadius: 25,
+    // borderTopRightRadius: 25,
   },
   title: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
+    color: 'yellow',
   },
   artist: {
-    fontSize: 18,
+    fontSize: 16,
     marginBottom: 16,
+    color: 'pink',
   },
   controls: {
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
+    // justifyContent: 'space-between',
   },
   slider: {
-    width: 200,
-    height: 40,
-    marginBottom: 16,
+    width: '85%',
+    height: 10,
+    // marginBottom: 16,
+
+    paddingVertical: 15,
   },
   duration: {
     fontSize: 16,
+    color: 'white',
+  },
+  thumb: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: 'blue',
+    // Add more custom styles for the thumb here
   },
 });

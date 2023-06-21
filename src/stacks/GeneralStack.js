@@ -8,9 +8,6 @@ const GeneralStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Generals" component={GeneralScreen} />
-      {/* <Stack.Screen name="Notifications" component={Notifications} />
-      <Stack.Screen name="Profile" component={Profile} />
-      <Stack.Screen name="Settings" component={Settings} /> */}
     </Stack.Navigator>
   );
 };

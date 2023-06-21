@@ -12,9 +12,9 @@ const Drawers = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{}}>
-        <Tab.Screen name="Home" component={HomeStack} />
-        <Tab.Screen name="General" component={GeneralStack} />
-        <Tab.Screen name="Setting" component={SettingStack} />
+        <Tab.Screen name="ပဌာန်း" component={HomeStack} />
+        <Tab.Screen name="ပုတီးစိပ်မည်" component={GeneralStack} />
+        <Tab.Screen name="ဗဟုသုတ" component={SettingStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );
