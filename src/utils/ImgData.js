@@ -1,0 +1,31 @@
+import AssetSource from './AssetSource';
+export const myImages = [
+  AssetSource.p0,
+  AssetSource.p1,
+  AssetSource.p2,
+  AssetSource.p3,
+  AssetSource.p4,
+  AssetSource.p5,
+  AssetSource.p6,
+  AssetSource.p7,
+  AssetSource.p8,
+  AssetSource.p9,
+  AssetSource.p10,
+  AssetSource.p11,
+  AssetSource.p12,
+];
+// export const myImages = [
+//   {p1: AssetSource.p0},
+//   {p2: AssetSource.p1},
+//   {p3: AssetSource.p2},
+//   {p4: AssetSource.p3},
+//   {p5: AssetSource.p4},
+//   {p6: AssetSource.p5},
+//   {p7: AssetSource.p6},
+//   {p8: AssetSource.p7},
+//   {p9: AssetSource.p8},
+//   {p10: AssetSource.p9},
+//   {p11: AssetSource.p10},
+//   {p12: AssetSource.p11},
+//   {p13: AssetSource.p12},
+// ];

@@ -7,11 +7,10 @@ import SettingScreen from '../screens/settings/SettingScreen';
 const Stack = createStackNavigator();
 const GeneralStack = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="Settings">
       <Stack.Screen name="Settings" component={SettingScreen} />
-      {/* <Stack.Screen name="Notifications" component={Notifications} />
-      <Stack.Screen name="Profile" component={Profile} />
-      <Stack.Screen name="Settings" component={Settings} /> */}
     </Stack.Navigator>
   );
 };

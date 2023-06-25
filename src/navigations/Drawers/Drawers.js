@@ -12,9 +12,60 @@ const Drawers = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{}}>
-        <Tab.Screen name="ပဌာန်း" component={HomeStack} />
-        <Tab.Screen name="ပုတီးစိပ်မည်" component={GeneralStack} />
-        <Tab.Screen name="ဗဟုသုတ" component={SettingStack} />
+        <Tab.Screen
+          name="home"
+          component={HomeStack}
+          options={{
+            tabBarLabel: ({focused, color, style}) => (
+              <Text
+                style={[
+                  style,
+                  {
+                    color: focused ? 'blue' : 'black', // Set the desired font color
+                    fontWeight: 'bold', // Set the desired font weight
+                  },
+                ]}>
+                ပဌာန်း
+              </Text>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="general"
+          component={GeneralStack}
+          options={{
+            tabBarLabel: ({focused, color, style}) => (
+              <Text
+                style={[
+                  style,
+                  {
+                    color: focused ? 'blue' : 'black', // Set the desired font color
+                    fontWeight: 'bold', // Set the desired font weight
+                  },
+                ]}>
+                ပုတီးစိပ်မည်
+              </Text>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="setting"
+          component={SettingStack}
+          options={{
+            tabBarLabel: ({focused, color, style}) => (
+              <Text
+                style={[
+                  style,
+                  {
+                    color: focused ? 'blue' : 'black', // Set the desired font color
+                    fontWeight: 'bold', // Set the desired font weight
+                  },
+                ]}>
+                ဗဟုသုတ
+              </Text>
+            ),
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

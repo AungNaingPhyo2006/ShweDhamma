@@ -8,11 +8,15 @@ import {
   Modal,
   Pressable,
   ScrollView,
+  FlatList,
+  Animated,
 } from 'react-native';
 import React, {useState} from 'react';
-
-import {ArrowLeftCircle} from 'lucide-react-native';
-const ShowModal = ({setModalVisible, modalVisible, data, title}) => {
+import {ArrowLeftCircle, Cross, Timer, TimerReset} from 'lucide-react-native';
+import {convertMmDigit} from '../../utils/MyanmarNum';
+const ShowModal = ({setModalVisible, modalVisible, data, title, fontSize}) => {
+  // console.log('title', title);
+  const [count, setCount] = useState(0);
   return (
     <Modal
       animationType="slide"
@@ -29,8 +33,9 @@ const ShowModal = ({setModalVisible, modalVisible, data, title}) => {
               alignItems: 'center',
               padding: 12,
             }}>
-            <Text>{title}</Text>
+            <Text style={{color: '#000', fontWeight: 'bold'}}>{title}</Text>
           </View>
+
           <ScrollView
             style={{
               paddingVertical: 24,
@@ -38,20 +43,50 @@ const ShowModal = ({setModalVisible, modalVisible, data, title}) => {
               marginHorizontal: 18,
             }}
             showsVerticalScrollIndicator={false}>
-            <Text style={{color: 'blue', fontSize: 18, letterSpacing: 1}}>
-              {data}
-            </Text>
+            <Text style={{color: 'black', fontSize: fontSize}}>{data}</Text>
           </ScrollView>
+
           {/* <=================> */}
-          <Pressable
-            style={[styles.button, styles.buttonClose]}
-            onPress={() => setModalVisible(!modalVisible)}>
-            <ArrowLeftCircle
-              size={35}
-              color="#fff"
-              style={{alignSelf: 'center'}}
-            />
-          </Pressable>
+          {title == 'ပဌာန်း ဒေသနာတော်' ? (
+            <View style={[styles.button, styles.buttonOpen, styles.timerBtn]}>
+              <Text
+                style={{
+                  color: 'blue',
+                  fontWeight: 'bold',
+                  marginTop: 5,
+                }}>
+                {convertMmDigit(count)} - ကြိမ်
+              </Text>
+              <TimerReset
+                size={35}
+                color="#000"
+                style={{alignSelf: 'center'}}
+                onPress={() => {
+                  setModalVisible(!modalVisible);
+                  setCount(0);
+                }}
+              />
+              <Timer
+                size={36}
+                color="darkblue"
+                onPress={() => {
+                  setCount(count + 1);
+                }}
+              />
+            </View>
+          ) : (
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}>
+              <ArrowLeftCircle
+                size={35}
+                color="#fff"
+                style={{alignSelf: 'center'}}
+              />
+            </Pressable>
+          )}
         </View>
       </View>
     </Modal>
@@ -98,5 +133,13 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+  },
+  timerBtn: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 12,
+    paddingHorizontal: 15,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
 });

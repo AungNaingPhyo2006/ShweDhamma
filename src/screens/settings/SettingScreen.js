@@ -4,17 +4,24 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
 import React, {useState} from 'react';
 import ShowModal from './ShowModal';
-import {txt, txt1} from '../../utils/TxtData';
+import {txt, txt1, txt2, txt3} from '../../utils/TxtData';
+import ImgModal from './ImgModal';
+import AssetSource from '../../utils/AssetSource';
 const SettingScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState(null);
   const [title, setTitle] = useState(null);
+  const [imgVisible, setImgVisible] = useState(false);
 
   const toggleVisible = () => {
     setModalVisible(true);
+  };
+  const toggleImgVisible = () => {
+    setImgVisible(true);
   };
 
   return (
@@ -22,8 +29,16 @@ const SettingScreen = () => {
       <ShowModal
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
-        data={data}
         title={title}
+        data={data}
+        fontSize={20}
+      />
+      <ImgModal
+        setImgVisible={setImgVisible}
+        imgVisible={imgVisible}
+        title={title}
+        data={data}
+        fontSize={20}
       />
       {/* <========modal end=======> */}
       <View
@@ -51,9 +66,9 @@ const SettingScreen = () => {
             onPress={() => {
               toggleVisible();
               setData(txt);
-              setTitle('ပဌာန်း အလွယ် ကျက်မှတ်နည်း');
+              setTitle('ပဌာန်း ဒေသနာတော်');
             }}>
-            <Text style={{color: 'white'}}>ပဌာန်း အလွယ် ကျက်မှတ်နည်း</Text>
+            <Text style={{color: 'white'}}>ပဌာန်း ဒေသနာတော်</Text>
           </TouchableOpacity>
         </View>
         {/* <==========================> */}
@@ -61,11 +76,51 @@ const SettingScreen = () => {
           <TouchableOpacity
             style={styles.txtContainer}
             onPress={() => {
+              toggleImgVisible();
+              setTitle('ပဌာန်း အလွယ် ကျက်မှတ်နည်း');
+            }}>
+            <Text style={{color: 'white'}}>ပဌာန်း အလွယ် ကျက်မှတ်နည်း</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* <==========================> */}
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.txtContainer}
+            onPress={() => {
+              toggleVisible();
+              setTitle('စံချိန်ကိုက် ပဋ္ဌာန်းပူဇော်နည်း');
+              setData(txt3);
+            }}>
+            <Text style={{color: 'white'}}>
+              စံချိန်ကိုက် ပဋ္ဌာန်းပူဇော်နည်း
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* <==========================> */}
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.txtContainer}
+            onPress={() => {
               toggleVisible();
               setData(txt1);
-              setTitle('ပဌာန်း အကျိုး');
+              setTitle('ပဌာန်း အကျိုး-သာဓက');
             }}>
-            <Text style={{color: 'white'}}>ပဌာန်း အကျိုး</Text>
+            <Text style={{color: 'white'}}>ပဌာန်း အကျိုး-သာဓက</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.txtContainer}
+            onPress={() => {
+              toggleVisible();
+              setData(txt2);
+              setTitle('ပဌာန်း မှန်မှန်ရွတ်ဆိုရခြင်းအကျိုး');
+            }}>
+            <Text style={{color: 'white'}}>
+              ပဌာန်း မှန်မှန်ရွတ်ဆိုရခြင်းအကျိုး
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
