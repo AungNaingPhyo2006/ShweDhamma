@@ -24,25 +24,25 @@ const General = () => {
           }}>
           <View
             style={{
-              padding: 9,
+              paddingVertical: 15,
               width: '60%',
-              height: '9%',
-              marginVertical: '9%',
-              backgroundColor: 'white',
+              height: '12%',
+              marginVertical: '5%',
+              backgroundColor: '#fff',
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 10,
               elevation: 9,
             }}>
-            <Text style={{color: 'blue', fontSize: 18, fontWeight: 'bold'}}>
-              {convertMmDigit(count)} -ပတ်
+            <Text style={{color: 'blue', fontSize: 16, fontWeight: 'bold'}}>
+              {convertMmDigit(count)} - ပတ်
             </Text>
           </View>
           <Pressable
             style={{
               backgroundColor: '#24a0ed',
               padding: 6,
-              marginVertical: 24,
+              marginVertical: 9,
               borderRadius: 5,
             }}
             onPress={() => {
