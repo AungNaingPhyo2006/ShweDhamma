@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {convertMmDigit} from '../../utils/MyanmarNum';
+import {isUnicode} from 'react-native-mdetect';
+import {convertZawgyiToUnicode} from '../../utils/FontConverter';
 
 const General = () => {
   const [count, setCount] = useState(0);
@@ -35,7 +37,8 @@ const General = () => {
               elevation: 9,
             }}>
             <Text style={{color: 'blue', fontSize: 16, fontWeight: 'bold'}}>
-              {convertMmDigit(count)} - ပတ်
+              {convertMmDigit(count)} -{' '}
+              {isUnicode ? `ပတ်` : convertZawgyiToUnicode('ပတ်')}
             </Text>
           </View>
           <Pressable
@@ -48,7 +51,9 @@ const General = () => {
             onPress={() => {
               setCount(0);
             }}>
-            <Text style={{color: 'white'}}>ပြန်စမည်</Text>
+            <Text style={{color: 'white'}}>
+              {isUnicode ? `ပြန်စမည်` : convertZawgyiToUnicode('ပြန်စမည်')}
+            </Text>
           </Pressable>
           <TouchableOpacity
             style={{

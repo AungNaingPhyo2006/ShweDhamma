@@ -5,6 +5,8 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import HomeStack from '../../stacks/HomeStack';
 import GeneralStack from '../../stacks/GeneralStack';
 import SettingStack from '../../stacks/SettingStack';
+import {isUnicode} from 'react-native-mdetect';
+import {convertZawgyiToUnicode} from '../../utils/FontConverter';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -25,7 +27,7 @@ const Drawers = () => {
                     fontWeight: 'bold', // Set the desired font weight
                   },
                 ]}>
-                ပဌာန်း
+                {isUnicode ? `ပဌာန်း` : convertZawgyiToUnicode('ပဌာန်း')}
               </Text>
             ),
           }}
@@ -43,7 +45,9 @@ const Drawers = () => {
                     fontWeight: 'bold', // Set the desired font weight
                   },
                 ]}>
-                ပုတီးစိပ်မည်
+                {isUnicode
+                  ? `ပုတီးစိပ်မည်`
+                  : convertZawgyiToUnicode('ပုတီးစိပ်မည်')}
               </Text>
             ),
           }}
@@ -61,7 +65,7 @@ const Drawers = () => {
                     fontWeight: 'bold', // Set the desired font weight
                   },
                 ]}>
-                ဗဟုသုတ
+                {isUnicode ? `ဗဟုသုတ` : convertZawgyiToUnicode('ဗဟုသုတ')}
               </Text>
             ),
           }}

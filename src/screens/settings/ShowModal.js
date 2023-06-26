@@ -12,8 +12,16 @@ import {
   Animated,
 } from 'react-native';
 import React, {useState} from 'react';
-import {ArrowLeftCircle, Cross, Timer, TimerReset} from 'lucide-react-native';
+import {
+  ArrowLeftCircle,
+  Cross,
+  Timer,
+  TimerReset,
+  XCircle,
+} from 'lucide-react-native';
 import {convertMmDigit} from '../../utils/MyanmarNum';
+import {isUnicode} from 'react-native-mdetect';
+import {convertZawgyiToUnicode} from '../../utils/FontConverter';
 const ShowModal = ({setModalVisible, modalVisible, data, title, fontSize}) => {
   // console.log('title', title);
   const [count, setCount] = useState(0);
@@ -33,7 +41,9 @@ const ShowModal = ({setModalVisible, modalVisible, data, title, fontSize}) => {
               alignItems: 'center',
               padding: 12,
             }}>
-            <Text style={{color: '#000', fontWeight: 'bold'}}>{title}</Text>
+            <Text style={{color: '#000', fontWeight: 'bold'}}>
+              {isUnicode ? title : convertZawgyiToUnicode(title)}
+            </Text>
           </View>
 
           <ScrollView
@@ -43,7 +53,9 @@ const ShowModal = ({setModalVisible, modalVisible, data, title, fontSize}) => {
               marginHorizontal: 18,
             }}
             showsVerticalScrollIndicator={false}>
-            <Text style={{color: 'black', fontSize: fontSize}}>{data}</Text>
+            <Text style={{color: 'black', fontSize: fontSize}}>
+              {isUnicode ? data : convertZawgyiToUnicode(data)}
+            </Text>
           </ScrollView>
 
           {/* <=================> */}
@@ -55,20 +67,33 @@ const ShowModal = ({setModalVisible, modalVisible, data, title, fontSize}) => {
                   fontWeight: 'bold',
                   marginTop: 5,
                 }}>
-                {convertMmDigit(count)} - ကြိမ်
+                {convertMmDigit(count)} -{' '}
+                {isUnicode ? `ကြိမ်` : convertZawgyiToUnicode(`ကြိမ်`)}
               </Text>
-              <TimerReset
-                size={35}
-                color="#000"
-                style={{alignSelf: 'center'}}
-                onPress={() => {
-                  setModalVisible(!modalVisible);
-                  setCount(0);
-                }}
-              />
+              {count > 0 ? (
+                <TimerReset
+                  size={34}
+                  color="#000"
+                  style={{alignSelf: 'center'}}
+                  onPress={() => {
+                    setCount(0);
+                  }}
+                />
+              ) : (
+                <XCircle
+                  size={34}
+                  color="#000"
+                  style={{alignSelf: 'center'}}
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                  }}
+                />
+              )}
+
               <Timer
                 size={36}
                 color="darkblue"
+                style={{marginBottom: 5}}
                 onPress={() => {
                   setCount(count + 1);
                 }}

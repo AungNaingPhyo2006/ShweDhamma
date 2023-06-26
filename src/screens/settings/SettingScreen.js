@@ -11,6 +11,8 @@ import ShowModal from './ShowModal';
 import {txt, txt1, txt2, txt3} from '../../utils/TxtData';
 import ImgModal from './ImgModal';
 import AssetSource from '../../utils/AssetSource';
+import {isUnicode} from 'react-native-mdetect';
+import {convertZawgyiToUnicode} from '../../utils/FontConverter';
 const SettingScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState(null);
@@ -49,7 +51,9 @@ const SettingScreen = () => {
           paddingVertical: 10,
         }}>
         <Text style={{color: 'white'}}>
-          ပဌာန်း ဒေသနာဆိုင်ရာ သိမှတ်ဖွယ်ရာများ
+          {isUnicode
+            ? `ပဌာန်း ဒေသနာဆိုင်ရာ သိမှတ်ဖွယ်ရာများ`
+            : convertZawgyiToUnicode('ပဌာန်း ဒေသနာဆိုင်ရာ သိမှတ်ဖွယ်ရာများ')}
         </Text>
       </View>
       <ScrollView
@@ -68,7 +72,11 @@ const SettingScreen = () => {
               setData(txt);
               setTitle('ပဌာန်း ဒေသနာတော်');
             }}>
-            <Text style={{color: 'white'}}>ပဌာန်း ဒေသနာတော်</Text>
+            <Text style={{color: 'white'}}>
+              {isUnicode
+                ? `ပဌာန်း ဒေသနာတော်`
+                : convertZawgyiToUnicode('ပဌာန်း ဒေသနာတော်')}
+            </Text>
           </TouchableOpacity>
         </View>
         {/* <==========================> */}
@@ -79,7 +87,11 @@ const SettingScreen = () => {
               toggleImgVisible();
               setTitle('ပဌာန်း အလွယ် ကျက်မှတ်နည်း');
             }}>
-            <Text style={{color: 'white'}}>ပဌာန်း အလွယ် ကျက်မှတ်နည်း</Text>
+            <Text style={{color: 'white'}}>
+              {isUnicode
+                ? `ပဌာန်း အလွယ် ကျက်မှတ်နည်း`
+                : convertZawgyiToUnicode('ပဌာန်း အလွယ် ကျက်မှတ်နည်း')}
+            </Text>
           </TouchableOpacity>
         </View>
 
@@ -93,7 +105,9 @@ const SettingScreen = () => {
               setData(txt3);
             }}>
             <Text style={{color: 'white'}}>
-              စံချိန်ကိုက် ပဋ္ဌာန်းပူဇော်နည်း
+              {isUnicode
+                ? `စံချိန်ကိုက် ပဋ္ဌာန်းပူဇော်နည်း`
+                : convertZawgyiToUnicode('စံချိန်ကိုက် ပဋ္ဌာန်းပူဇော်နည်း')}
             </Text>
           </TouchableOpacity>
         </View>
@@ -107,7 +121,11 @@ const SettingScreen = () => {
               setData(txt1);
               setTitle('ပဌာန်း အကျိုး-သာဓက');
             }}>
-            <Text style={{color: 'white'}}>ပဌာန်း အကျိုး-သာဓက</Text>
+            <Text style={{color: 'white'}}>
+              {isUnicode
+                ? `ပဌာန်း အကျိုး-သာဓက`
+                : convertZawgyiToUnicode('ပဌာန်း အကျိုး-သာဓက')}
+            </Text>
           </TouchableOpacity>
         </View>
         <View style={styles.container}>
@@ -119,7 +137,9 @@ const SettingScreen = () => {
               setTitle('ပဌာန်း မှန်မှန်ရွတ်ဆိုရခြင်းအကျိုး');
             }}>
             <Text style={{color: 'white'}}>
-              ပဌာန်း မှန်မှန်ရွတ်ဆိုရခြင်းအကျိုး
+              {isUnicode
+                ? `ပဌာန်း မှန်မှန်ရွတ်ဆိုရခြင်းအကျိုး`
+                : convertZawgyiToUnicode('ပဌာန်း မှန်မှန်ရွတ်ဆိုရခြင်းအကျိုး')}
             </Text>
           </TouchableOpacity>
         </View>
