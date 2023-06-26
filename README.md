@@ -1,8 +1,7 @@
 # ShweDhamma
 ပဌာန်း ဒေသနာတော် ရွတ်ဖတ်ပူဇော်နိုင်ရန် React Native Mobile App
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/AungNaingPhyo2006/ShweDhamma/assets/115768795/218e8afe-e11a-4793-92d9-73592ce46ec7.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/AungNaingPhyo2006/ShweDhamma/assets/115768795/c77e74c4-bc19-4675-a3ce-12aa7459024d.png">
-  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/AungNaingPhyo2006/ShweDhamma/assets/115768795/0259d7c7-a3b0-4619-b765-d8549fa959b2.png">
-</picture>
+
+![ss1](https://github.com/AungNaingPhyo2006/ShweDhamma/assets/115768795/a41f2a73-4068-41a6-81e9-f2fd8013c90e)
+![ss2](https://github.com/AungNaingPhyo2006/ShweDhamma/assets/115768795/6ddeedab-6957-4993-85e4-601e790befa7)
+![ss3](https://github.com/AungNaingPhyo2006/ShweDhamma/assets/115768795/dec41af3-804a-4572-8441-a10ffc3e4205)
