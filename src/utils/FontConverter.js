@@ -9,3 +9,6 @@ export const convertUnicodeToZawgyi = uiText => {
   const zawgyiText = Rabbit.uni2zg(uiText);
   return zawgyiText;
 };
+
+// const txt = convertZawgyiToUnicode('ပဌာန္း ေဒသနာေတာ္');
+// console.log(txt);

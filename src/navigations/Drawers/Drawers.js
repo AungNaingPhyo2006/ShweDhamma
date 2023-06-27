@@ -6,7 +6,10 @@ import HomeStack from '../../stacks/HomeStack';
 import GeneralStack from '../../stacks/GeneralStack';
 import SettingStack from '../../stacks/SettingStack';
 import {isUnicode} from 'react-native-mdetect';
-import {convertZawgyiToUnicode} from '../../utils/FontConverter';
+import {
+  convertUnicodeToZawgyi,
+  convertZawgyiToUnicode,
+} from '../../utils/FontConverter';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -27,7 +30,10 @@ const Drawers = () => {
                     fontWeight: 'bold', // Set the desired font weight
                   },
                 ]}>
-                {isUnicode ? `ပဌာန်း` : convertZawgyiToUnicode('ပဌာန်း')}
+                {!isUnicode ? `ပဌာန္း` : convertZawgyiToUnicode(`ပဌာန္း`)}
+
+                {/* {isUnicode ? convertZawgyiToUnicode(`ပဌာန္း`) : `ပဌာန္း`} */}
+                {/* {isUnicode ? `ပဌာန်း` : 'ပဌာန္း'} */}
               </Text>
             ),
           }}
@@ -45,9 +51,13 @@ const Drawers = () => {
                     fontWeight: 'bold', // Set the desired font weight
                   },
                 ]}>
-                {isUnicode
-                  ? `ပုတီးစိပ်မည်`
-                  : convertZawgyiToUnicode('ပုတီးစိပ်မည်')}
+                {!isUnicode
+                  ? `ပုတီးစိပ္မည္`
+                  : convertZawgyiToUnicode(`ပုတီးစိပ္မည္`)}
+                {/* {isUnicode ? `ပုတီးစိပ်မည်` : 'ပုတီးစိပ္မည္'} */}
+                {/* {isUnicode
+                  ? convertZawgyiToUnicode(`ပုတီးစိပ္မည္`)
+                  : `ပုတီးစိပ္မည္`} */}
               </Text>
             ),
           }}
@@ -65,7 +75,10 @@ const Drawers = () => {
                     fontWeight: 'bold', // Set the desired font weight
                   },
                 ]}>
-                {isUnicode ? `ဗဟုသုတ` : convertZawgyiToUnicode('ဗဟုသုတ')}
+                {!isUnicode ? `ဗဟုသုတ` : convertZawgyiToUnicode(`ဗဟုသုတ`)}
+
+                {/* {isUnicode ? `ဗဟုသုတ` : `ဗဟုသုတ`} */}
+                {/* {isUnicode ? convertZawgyiToUnicode(`ဗဟုသုတ`) : `ဗဟုသုတ`} */}
               </Text>
             ),
           }}

@@ -21,9 +21,12 @@ import {
 } from 'lucide-react-native';
 import {convertMmDigit} from '../../utils/MyanmarNum';
 import {isUnicode} from 'react-native-mdetect';
-import {convertZawgyiToUnicode} from '../../utils/FontConverter';
+import {
+  convertUnicodeToZawgyi,
+  convertZawgyiToUnicode,
+} from '../../utils/FontConverter';
 const ShowModal = ({setModalVisible, modalVisible, data, title, fontSize}) => {
-  // console.log('title', title);
+  // console.log('title=====>', title);
   const [count, setCount] = useState(0);
   return (
     <Modal
@@ -42,7 +45,10 @@ const ShowModal = ({setModalVisible, modalVisible, data, title, fontSize}) => {
               padding: 12,
             }}>
             <Text style={{color: '#000', fontWeight: 'bold'}}>
-              {isUnicode ? title : convertZawgyiToUnicode(title)}
+              {/* {isUnicode && title !== null
+                ? title
+                : convertUnicodeToZawgyi(title)} */}
+              {title}
             </Text>
           </View>
 
@@ -54,12 +60,14 @@ const ShowModal = ({setModalVisible, modalVisible, data, title, fontSize}) => {
             }}
             showsVerticalScrollIndicator={false}>
             <Text style={{color: 'black', fontSize: fontSize}}>
-              {isUnicode ? data : convertZawgyiToUnicode(data)}
+              {isUnicode && data !== null ? convertZawgyiToUnicode(data) : data}
+
+              {/* {data} */}
             </Text>
           </ScrollView>
 
           {/* <=================> */}
-          {title == 'ပဌာန်း ဒေသနာတော်' ? (
+          {title == `ပဌာန်း ဒေသနာတော်` ? (
             <View style={[styles.button, styles.buttonOpen, styles.timerBtn]}>
               <Text
                 style={{
@@ -67,8 +75,9 @@ const ShowModal = ({setModalVisible, modalVisible, data, title, fontSize}) => {
                   fontWeight: 'bold',
                   marginTop: 5,
                 }}>
-                {convertMmDigit(count)} -{' '}
-                {isUnicode ? `ကြိမ်` : convertZawgyiToUnicode(`ကြိမ်`)}
+                {/* {convertMmDigit(count)} - {isUnicode ? `ကြိမ်` : `ႀကိမ္`} */}
+                {convertMmDigit(count)} -
+                {!isUnicode ? `ႀကိမ္` : convertZawgyiToUnicode('ႀကိမ္')}
               </Text>
               {count > 0 ? (
                 <TimerReset
